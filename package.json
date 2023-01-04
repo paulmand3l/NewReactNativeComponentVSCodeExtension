@@ -1,11 +1,11 @@
 {
-	"name": "NewReactComponentMenuItem",
-	"displayName": "NewReactComponentMenuItem",
-	"description": "Create new React components by right clicking on the file explorer.",
+	"name": "NewReactNativeComponentMenuItem",
+	"displayName": "NewReactNativeComponentMenuItem",
+	"description": "Create new React Native components by right clicking on the file explorer.",
 	"publisher": "craftyasthefox",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/paulmand3l/NewReactComponentVSCodeExtension"
+		"url": "https://github.com/paulmand3l/NewReactNativeComponentVSCodeExtension"
 	},
 	"version": "0.0.8",
 	"engines": {
@@ -15,24 +15,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:create-react-component.createReactComponent"
+		"onCommand:create-react-native-component.createReactNativeComponent"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "create-react-component.createReactComponent",
+					"command": "create-react-native-component.createReactNativeComponent",
 					"when": "explorerResourceIsFolder",
 					"group": "navigation@9",
-					"title": "New React Component"
+					"title": "New React Native Component"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "create-react-component.createReactComponent",
-				"title": "New React Component"
+				"command": "create-react-native-component.createReactNativeComponent",
+				"title": "New React Native Component"
 			}
 		]
 	},

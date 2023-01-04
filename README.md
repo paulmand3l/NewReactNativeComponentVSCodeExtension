@@ -1,12 +1,12 @@
-# New React Component
+# New React Native Component
 
-This extension adds a new item (named "New React Component") to the Explorer context menu when right-clicking on a folder.
+This extension adds a new item (named "New React Native Component") to the Explorer context menu when right-clicking on a folder.
 
 When selected, this new menu item will prompt you for a name for your component, then create several files within the folder you right-clicked on:
 
 - `/ComponentName`
-- `/ComponentName/index.js`
-- `/ComponentName/ComponentName.js`
-- `/ComponentName/ComponentName.module.css`
+- `/ComponentName/index.ts`
+- `/ComponentName/ComponentName.tsx`
+- `/ComponentName/ComponentName.style.ts`
 
-These files contain a class-based React component (extending from PureComponent) set up with css modules.
+These files contain a pure-function React component ready for building.

@@ -1,12 +1,12 @@
 const vscode = require('vscode');
 
-const COMMAND_NAME = 'create-react-component.createReactComponent';
+const COMMAND_NAME = 'create-react-native-component.createReactNativeComponent';
 
 function utf8(str) {
     return Buffer.from(str, 'utf8');
 }
 
-async function createReactComponent(basePath) {
+async function createReactNativeComponent(basePath) {
     const componentName = await vscode.window.showInputBox({
         ignoreFocusOut: true,
         placeHolder: "ComponentName",
@@ -33,7 +33,7 @@ async function createReactComponent(basePath) {
     const componentPath = joinPath(basePath, `/${componentName}`);
     const indexFile = joinPath(componentPath, `/index.ts`);
     const mainFile = joinPath(componentPath, `/${componentName}.tsx`);
-    const cssFile = joinPath(componentPath, `/${componentName}.module.scss`);
+    const cssFile = joinPath(componentPath, `/${componentName}.style.ts`);
 
     fs.createDirectory(componentPath);
     fs.writeFile(indexFile, utf8(
@@ -42,19 +42,19 @@ async function createReactComponent(basePath) {
     ));
 
     fs.writeFile(mainFile, utf8(
-`import React from 'react';
-import styles from './${componentName}.module.scss';
+`import { View, ViewProps } from 'react-native';
+import styles from './${componentName}.style';
 
-interface ${componentName}Props extends React.ComponentPropsWithoutRef<'div'> {
+interface ${componentName}Props extends ViewProps {
   children?: React.ReactNode
 };
 
 const ${componentName} = (props: ${componentName}Props) => {
   const {children, ...rest} = props;
   return (
-    <div className={styles.${componentName}} {...rest}>
+    <View style={styles.${componentName}} {...rest}>
       {children}
-    </div>
+    </View>
   );
 };
 
@@ -63,9 +63,13 @@ export default ${componentName};
     ));
 
     fs.writeFile(cssFile, utf8(
-`.${componentName} {
+`import { StyleSheet } from 'react-native';
 
-}
+export default StyleSheet.create({
+  ${componentName}: {
+
+  },
+});
 `
     ));
 
@@ -73,7 +77,7 @@ export default ${componentName};
 }
 
 function activate(context) {
-    let disposable = vscode.commands.registerCommand(COMMAND_NAME, createReactComponent);
+    let disposable = vscode.commands.registerCommand(COMMAND_NAME, createReactNativeComponent);
     context.subscriptions.push(disposable);
 }
 
