@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/paulmand3l/NewReactNativeComponentVSCodeExtension"
 	},
-	"version": "0.0.8",
+	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
